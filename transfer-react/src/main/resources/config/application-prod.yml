@@ -1,0 +1,8 @@
+server:
+  port: 8080
+logging:
+  level:
+    root: info
+    com.cucumber.test: warn
+  file:
+    name: logs/prod.log 

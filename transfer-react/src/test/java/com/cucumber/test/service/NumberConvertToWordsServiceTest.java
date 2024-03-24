@@ -2,7 +2,6 @@ package com.cucumber.test.service;
 
 import com.cucumber.test.enums.DivisorEnums;
 import com.cucumber.test.services.NumberConvertToWordsService;
-import com.cucumber.test.services.impl.NumberConvertToWordsServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

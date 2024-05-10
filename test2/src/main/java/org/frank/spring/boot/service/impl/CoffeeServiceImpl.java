@@ -2,8 +2,10 @@ package org.frank.spring.boot.service.impl;
 
 import org.frank.spring.boot.exceptions.AprilFoolsException;
 import org.frank.spring.boot.exceptions.CoffeeDepletedException;
+import org.frank.spring.boot.generators.CoffeeResponseGenerator;
 import org.frank.spring.boot.models.CoffeeResponse;
 import org.frank.spring.boot.service.CoffeeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.ZonedDateTime;
@@ -13,6 +15,9 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Service
 public class CoffeeServiceImpl implements CoffeeService {
 
+    @Autowired
+    private CoffeeResponseGenerator coffeeResponseGenerator;
+    
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ISO_OFFSET_DATE_TIME;
     private AtomicInteger requestCount = new AtomicInteger(0);
     
@@ -28,7 +33,7 @@ public class CoffeeServiceImpl implements CoffeeService {
             throw new CoffeeDepletedException("Coffee supply depleted");
         }
 
-        String currentTime = now.format(DATE_TIME_FORMATTER);
-        return new CoffeeResponse("Your piping hot coffee is ready", currentTime);
+        String currentTime = now.format(DATE_TIME_FORMATTER);        
+        return coffeeResponseGenerator.brewCoffee("Your piping hot coffee is ready", currentTime);
     }
 }

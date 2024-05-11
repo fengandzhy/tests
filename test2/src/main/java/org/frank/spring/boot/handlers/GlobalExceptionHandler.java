@@ -11,11 +11,11 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(CoffeeDepletedException.class)
     public ResponseEntity<?> handleCoffeeDepletedException(CoffeeDepletedException ex) {
-        return ResponseEntity.status(503).body("");
+        return ResponseEntity.status(503).body(ex.getMessage());
     }
 
     @ExceptionHandler(AprilFoolsException.class)
     public ResponseEntity<?> handleAprilFoolsException(AprilFoolsException ex) {
-        return ResponseEntity.status(418).body("");
+        return ResponseEntity.status(418).body(ex.getMessage());
     }
 }

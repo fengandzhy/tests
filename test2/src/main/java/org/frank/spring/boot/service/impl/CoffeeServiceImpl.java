@@ -25,12 +25,12 @@ public class CoffeeServiceImpl implements CoffeeService {
     public CoffeeResponse brewCoffee() {
         ZonedDateTime now = ZonedDateTime.now();
         if (now.getMonthValue() == 4 && now.getDayOfMonth() == 1) {
-            throw new AprilFoolsException("No coffee on April Fools!");
+            throw new AprilFoolsException("I’m a teapot");
         }
 
         int currentCount = requestCount.incrementAndGet();
         if (currentCount % 5 == 0) {
-            throw new CoffeeDepletedException("Coffee supply depleted");
+            throw new CoffeeDepletedException("Service Unavailable");
         }
 
         String currentTime = now.format(DATE_TIME_FORMATTER);        
